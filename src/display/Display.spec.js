@@ -8,7 +8,7 @@ import "jest-dom/extend-expect";
 afterEach(cleanup);
 
 describe('<Display/>', () => {
-    xit('matches snapshot', () => {
+    it('matches snapshot', () => {
         const domTree = renderer.create(<Display />);
 
         expect(domTree.toJSON()).toMatchSnapshot();

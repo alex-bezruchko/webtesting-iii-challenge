@@ -8,7 +8,7 @@ afterEach(cleanup);
 
 
 describe('<Dashboard/>', () => {
-    xit('matches snapshot', () => {
+    it('matches snapshot', () => {
         const domTree = renderer.create(<Dashboard />);
 
         expect(domTree.toJSON()).toMatchSnapshot();
@@ -115,6 +115,22 @@ describe('<Dashboard/>', () => {
         const closedDisplay = getByText('Closed')
 
         expect(closedDisplay).toHaveClass("red-led");;
+
+    })
+
+    it('locked display shows red on locked gate', () => {
+        const mock = jest.fn();
+        const { getByText } = render(<Dashboard toggleClosed={mock} toggleLocked={mock}/>);
+
+        const closeGateButton = getByText('Close Gate');
+        fireEvent.click(closeGateButton);
+
+        const lockGateButton = getByText("Lock Gate");
+        fireEvent.click(lockGateButton);
+
+        const lockedDisplay = getByText('Locked')
+
+        expect(lockedDisplay).toHaveClass("red-led");;
 
     })
 })

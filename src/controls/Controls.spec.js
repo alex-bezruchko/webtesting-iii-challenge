@@ -9,7 +9,7 @@ import "jest-dom/extend-expect";
 import Controls from './Controls';
 
 describe('<Controls />', () => {
-    xit('matches snapshot', () => {
+    it('matches snapshot', () => {
         const domTree = renderer.create(<Controls />);
 
         expect(domTree.toJSON()).toMatchSnapshot();
