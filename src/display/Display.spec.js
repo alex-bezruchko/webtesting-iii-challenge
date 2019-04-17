@@ -31,4 +31,23 @@ describe('<Display/>', () => {
         expect(button.textContent).toEqual("Open");;
 
     })
+    it('open class shows green on default', () => {
+        
+        const { getByText } = render(<Display />);
+
+        const button = getByText('Open');
+
+        expect(button).toHaveClass("green-led");;
+
+    })
+    it('unlocked shows green on default', () => {
+        
+        const { getByText } = render(<Display />);
+
+        const button = getByText('Unlocked');
+
+        expect(button).toHaveClass("green-led");;
+
+    })
+
 })
