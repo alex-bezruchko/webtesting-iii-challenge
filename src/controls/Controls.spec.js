@@ -30,8 +30,7 @@ describe('<Controls />', () => {
         const lockButton = getByText(/Lock Gate/i);
         expect(lockButton).toBeDisabled();
     });
-
-   it('is the lock gate function working', () => {
+    it('is the lock gate function working', () => {
         const mock = jest.fn();
         
         const { getByText, queryByText } = render(<Controls toggleClosed={mock}/>);
@@ -44,4 +43,9 @@ describe('<Controls />', () => {
         // const button = queryByText("Lock Gate");
         expect(lockGateButton.textContent).toEqual("Lock Gate");
     })
+   
+
+
+
+
 })
