@@ -104,4 +104,17 @@ describe('<Dashboard/>', () => {
         expect(lockedDisplay.textContent).toEqual("Unlocked");;
 
     });
+
+    it('closed display shows red on close gate', () => {
+        const mock = jest.fn();
+        const { getByText } = render(<Dashboard toggleClosed={mock} />);
+
+        const closeGateButton = getByText('Close Gate');
+        fireEvent.click(closeGateButton);
+
+        const closedDisplay = getByText('Closed')
+
+        expect(closedDisplay).toHaveClass("red-led");;
+
+    })
 })
