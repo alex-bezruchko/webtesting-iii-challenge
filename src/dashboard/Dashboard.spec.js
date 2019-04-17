@@ -150,4 +150,20 @@ describe('<Dashboard/>', () => {
         expect(lockedDisplay).toHaveClass("green-led");;
 
     })
+
+    it('closed display shows green on open gate', () => {
+        const mock = jest.fn();
+        const { getByText } = render(<Dashboard toggleClosed={mock} toggleLocked={mock}/>);
+
+        const closeGateButton = getByText('Close Gate');
+        fireEvent.click(closeGateButton);
+
+        const openGateButton = getByText("Open Gate");
+        fireEvent.click(openGateButton);
+
+
+        const openDisplay = getByText('Open');
+        expect(openDisplay).toHaveClass("green-led");;
+
+    })
 })
