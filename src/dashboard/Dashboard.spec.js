@@ -133,4 +133,21 @@ describe('<Dashboard/>', () => {
         expect(lockedDisplay).toHaveClass("red-led");;
 
     })
+    it('locked display shows green on unlocked gate', () => {
+        const mock = jest.fn();
+        const { getByText } = render(<Dashboard toggleClosed={mock} toggleLocked={mock}/>);
+
+        const closeGateButton = getByText('Close Gate');
+        fireEvent.click(closeGateButton);
+
+        const lockGateButton = getByText("Lock Gate");
+        fireEvent.click(lockGateButton);
+
+        const unlockGateButton = getByText('Unlock Gate')
+        fireEvent.click(unlockGateButton);
+
+        const lockedDisplay = getByText('Unlocked')
+        expect(lockedDisplay).toHaveClass("green-led");;
+
+    })
 })
