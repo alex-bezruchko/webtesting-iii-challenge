@@ -85,4 +85,23 @@ describe('<Dashboard/>', () => {
         expect(lockedDisplay.textContent).toEqual("Locked");;
 
     });
+
+    it("unlocked display on unlocked gate", () => {
+        const mock = jest.fn();
+        
+        const { getByText, queryByText } = render(<Dashboard toggleClosed={mock} toggleLocked={mock} />);
+
+        const closeGateButton = getByText("Close Gate");
+
+        fireEvent.click(closeGateButton);
+
+        const lockGateButton = queryByText("Lock Gate");
+        fireEvent.click(lockGateButton);
+
+        const unlockGateButton = getByText("Unlock Gate");
+        fireEvent.click(unlockGateButton);
+        const lockedDisplay = getByText("Unlocked")
+        expect(lockedDisplay.textContent).toEqual("Unlocked");;
+
+    });
 })
