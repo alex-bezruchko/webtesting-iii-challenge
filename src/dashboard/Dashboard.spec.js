@@ -30,4 +30,21 @@ describe('<Dashboard/>', () => {
         expect(openGateButton).toBeDisabled();
 
     });
+
+    it("unlock gate button is available when gate is locked", () => {
+        const mock = jest.fn();
+        
+        const { getByText, queryByText } = render(<Dashboard toggleClosed={mock} toggleLocked={mock} />);
+
+        const closeGateButton = getByText("Close Gate");
+
+        fireEvent.click(closeGateButton);
+
+        const lockGateButton = queryByText("Lock Gate");
+        fireEvent.click(lockGateButton);
+
+        const unlockGateButton = getByText("Unlock Gate")
+        expect(unlockGateButton.textContent).toEqual("Unlock Gate");;
+
+    });
 })
