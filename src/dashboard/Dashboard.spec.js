@@ -14,6 +14,12 @@ describe('<Dashboard/>', () => {
         expect(domTree.toJSON()).toMatchSnapshot();
     })
 
+    it("Close gate is on default", () => {
+        const { getByText } = render(<Dashboard />);
+        const closeGateButton = getByText("Close Gate");
+        expect(closeGateButton.textContent).toEqual("Close Gate");
+    })
+    
     it("open gate is disabled when gate is locked", () => {
         const mock = jest.fn();
         
