@@ -22,4 +22,13 @@ describe('<Display/>', () => {
         expect(button.textContent).toEqual("Unlocked");;
 
     })
+    it('open shows on default', () => {
+        
+        const { getByText } = render(<Display />);
+
+        const button = getByText('Open');
+
+        expect(button.textContent).toEqual("Open");;
+
+    })
 })
